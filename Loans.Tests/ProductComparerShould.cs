@@ -2,6 +2,7 @@
 using Loans.Domain.Applications.Values;
 using NUnit.Framework;
 using System.Collections.Generic;
+using FluentAssertions;
 
 namespace Loans.Tests
 {
@@ -36,10 +37,10 @@ namespace Loans.Tests
         [Test]        
         public void ReturnCorrectNumberOfComparisons()
         {
-            List<MonthlyRepaymentComparison> comparisons =
-                sut.CompareMonthlyRepayments(new LoanTerm(30));
+            var comparisons = sut.CompareMonthlyRepayments(new LoanTerm(30));
 
-            Assert.That(comparisons, Has.Exactly(3).Items);
+            //Assert.That(comparisons, Has.Exactly(3).Items);
+            comparisons.Should().HaveCount(3);
         }
 
 
