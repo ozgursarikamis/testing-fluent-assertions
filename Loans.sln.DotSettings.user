@@ -5,6 +5,7 @@
     &lt;TestId&gt;NUnit3x::A7DCA12C-BDD0-49B9-BE24-F6D3BF6761BD::.NETCoreApp,Version=v2.1::Loans.Tests.LoanTermShould&lt;/TestId&gt;&#xD;
     &lt;TestId&gt;NUnit3x::A7DCA12C-BDD0-49B9-BE24-F6D3BF6761BD::.NETCoreApp,Version=v2.1::Loans.Tests.LoanApplicationProcessorShould.AcceptUsingPartialMock&lt;/TestId&gt;&#xD;
     &lt;TestId&gt;NUnit3x::A7DCA12C-BDD0-49B9-BE24-F6D3BF6761BD::.NETCoreApp,Version=v2.1::Loans.Tests.ProductComparerShould.ReturnCorrectNumberOfComparisons&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::A7DCA12C-BDD0-49B9-BE24-F6D3BF6761BD::.NETCoreApp,Version=v2.1::Loans.Tests.ProductComparerShould.NotReturnDuplicateComparisons&lt;/TestId&gt;&#xD;
   &lt;/TestAncestor&gt;&#xD;
 &lt;/SessionState&gt;</s:String>
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=569db1f6_002D440a_002D48c8_002D9eef_002D8b2213b18cd4/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="StoreCurrencyCode" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;

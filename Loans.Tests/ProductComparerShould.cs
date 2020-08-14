@@ -47,10 +47,10 @@ namespace Loans.Tests
         [Test]
         public void NotReturnDuplicateComparisons()
         {
-            List<MonthlyRepaymentComparison> comparisons =
-                sut.CompareMonthlyRepayments(new LoanTerm(30));
+            var comparisons = sut.CompareMonthlyRepayments(new LoanTerm(30));
 
-            Assert.That(comparisons, Is.Unique);
+            //Assert.That(comparisons, Is.Unique);
+            comparisons.Should().OnlyHaveUniqueItems();
         }
 
 
