@@ -13,6 +13,9 @@ namespace Loans.Tests
             // loanAmount.CurrencyCode.Should().Be("USD");
             // loanAmount.CurrencyCode.Should().BeEquivalentTo("USD");
             loanAmount.CurrencyCode.Should().Contain("S");
+            loanAmount.CurrencyCode.Should().StartWith("U");
+            loanAmount.CurrencyCode.Should().EndWith("D");
+            loanAmount.CurrencyCode.Should().BeOneOf("USD", "AUD", "GBP");
         }
     }
 }
