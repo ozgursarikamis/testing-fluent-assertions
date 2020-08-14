@@ -256,8 +256,10 @@ namespace Loans.Tests
 
             Assert.That(application.GetIsAccepted(), Is.True);
             // Assert.That(mockIdentityVerifier.Object.LastCheckTime, Is.EqualTo(expectedTime));
-            mockIdentityVerifier.Object.LastCheckTime
-                .Should().Be(expectedTime);
+            mockIdentityVerifier.Object.LastCheckTime.Should().Be(expectedTime);
+
+            mockIdentityVerifier.Object.LastCheckTime.Should().BeOnOrAfter(expectedTime);
+            mockIdentityVerifier.Object.LastCheckTime.Should().BeOnOrBefore(expectedTime);
         }
 
 
