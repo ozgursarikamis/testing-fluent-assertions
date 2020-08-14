@@ -1,6 +1,7 @@
 ﻿using Loans.Domain.Applications.Values;
 using NUnit.Framework;
 using System;
+using FluentAssertions;
 
 namespace Loans.Tests
 {
@@ -9,9 +10,10 @@ namespace Loans.Tests
         [Test]        
         public void ReturnTermInMonths()
         {
-            var sut = new LoanTerm(1);
+            var longTerm = new LoanTerm(1);
 
-            Assert.That(sut.ToMonths(), Is.EqualTo(12));
+            //Assert.That(sut.ToMonths(), Is.EqualTo(12));
+            longTerm.ToMonths().Should().Be(12);
         }
 
 
@@ -55,14 +57,15 @@ namespace Loans.Tests
         }
 
 
-        //[Test]
-        //public void FloatingPointExample()
-        //{
-        //    double pie = 1;
-        //    double people = 3;
-        //    double sliceOfPie = pie / people;
+        [Test]
+        public void FloatingPointExample()
+        {
+            double pie = 1;
+            double people = 3;
+            double sliceOfPie = pie / people;
 
-        //    sliceOfPie.Should().Be(0.33);
-        //}
+            // sliceOfPie.Should().Be(0.33);
+            sliceOfPie.Should().BeApproximately(0.33, 0.004);
+        }
     }
 }
