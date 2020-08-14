@@ -1,4 +1,5 @@
 ﻿using System;
+using FluentAssertions;
 using Loans.Domain.Applications;
 using NUnit.Framework;
 using Moq;
@@ -216,15 +217,16 @@ namespace Loans.Tests
         [Test]
         public void AcceptUsingPartialMock()
         {
-            LoanProduct product = new LoanProduct(99, "Loan", 5.25m);
-            LoanAmount amount = new LoanAmount("USD", 200_000);
-            var application = new LoanApplication(42,
-                                                  product,
-                                                  amount,
-                                                  "Sarah",
-                                                  25,
-                                                  "133 Pluralsight Drive, Draper, Utah",
-                                                  65_000);
+            var product = new LoanProduct(99, "Loan", 5.25m);
+            var amount = new LoanAmount("USD", 200_000);
+            var application = new LoanApplication(
+                42,
+                product,
+                amount,
+                "Sarah",
+                25,
+                "133 Pluralsight Drive, Draper, Utah",
+                65_000);
 
             var mockIdentityVerifier = new Mock<IdentityVerifierServiceGateway>();
 
@@ -253,7 +255,9 @@ namespace Loans.Tests
             sut.Process(application);
 
             Assert.That(application.GetIsAccepted(), Is.True);
-            Assert.That(mockIdentityVerifier.Object.LastCheckTime, Is.EqualTo(expectedTime));
+            // Assert.That(mockIdentityVerifier.Object.LastCheckTime, Is.EqualTo(expectedTime));
+            mockIdentityVerifier.Object.LastCheckTime
+                .Should().Be(expectedTime);
         }
 
 
