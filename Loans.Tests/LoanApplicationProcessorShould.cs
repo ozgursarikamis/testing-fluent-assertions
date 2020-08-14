@@ -1,5 +1,6 @@
 ﻿using System;
 using FluentAssertions;
+using FluentAssertions.Extensions;
 using Loans.Domain.Applications;
 using NUnit.Framework;
 using Moq;
@@ -260,6 +261,14 @@ namespace Loans.Tests
 
             mockIdentityVerifier.Object.LastCheckTime.Should().BeOnOrAfter(expectedTime);
             mockIdentityVerifier.Object.LastCheckTime.Should().BeOnOrBefore(expectedTime);
+
+            mockIdentityVerifier.Object.LastCheckTime.Should().Be(1.January(2000));
+            mockIdentityVerifier.Object.LastCheckTime.Should().Be(1.January(2000).At(0, 0));
+            mockIdentityVerifier.Object.LastCheckTime.Should()
+                .Be(1.Days().Before(2.January(2000)));
+
+            mockIdentityVerifier.Object.LastCheckTime.Should().HaveYear(2000);
+            mockIdentityVerifier.Object.LastCheckTime.Should().HaveDay(1);
         }
 
 
