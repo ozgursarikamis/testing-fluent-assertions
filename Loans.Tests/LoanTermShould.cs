@@ -13,7 +13,7 @@ namespace Loans.Tests
             var longTerm = new LoanTerm(1);
 
             //Assert.That(sut.ToMonths(), Is.EqualTo(12));
-            longTerm.ToMonths().Should().Be(12);
+            longTerm.ToMonths().Should().Be(12, "there are 12 months in a year");
         }
 
 
