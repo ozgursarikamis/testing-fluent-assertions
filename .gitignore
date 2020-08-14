@@ -3,3 +3,7 @@
 ################################################################################
 
 /.vs/Loans
+/Loans/bin/Debug/netcoreapp2.1
+/Loans/obj
+/Loans.Tests/bin/Debug/netcoreapp2.1
+/Loans.Tests/obj
