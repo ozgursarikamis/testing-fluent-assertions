@@ -95,5 +95,19 @@ namespace Loans.Tests
                         Has.Exactly(1)
                            .Matches(new MonthlyRepaymentGreaterThanZeroConstraint("a", 1)));
         }
+
+        [Test]
+        public void AssertionScope()
+        {
+            var comparisons = sut.CompareMonthlyRepayments(new LoanTerm(30));
+
+            comparisons.Should().NotBeNullOrEmpty();
+            comparisons.Should().HaveCount(4); // fails
+
+            // below won't executed:
+            comparisons.Should().OnlyHaveUniqueItems();
+            comparisons.Should().Contain(new MonthlyRepaymentComparison("v", 1, 643.28m));
+            comparisons.Should().BeInAscendingOrder(x => x.ProductName);
+        }
     }
 }
