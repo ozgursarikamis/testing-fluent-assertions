@@ -61,9 +61,10 @@ namespace Loans.Tests
                 sut.CompareMonthlyRepayments(new LoanTerm(30));
 
             // Need to also know the expected monthly repayment
-            var expectedProduct = new MonthlyRepaymentComparison("a", 1, 643.28m);
+            var expectedProduct = new MonthlyRepaymentComparison("zzz", 1, 643.28m);
 
-            Assert.That(comparisons, Does.Contain(expectedProduct));
+            //Assert.That(comparisons, Does.Contain(expectedProduct));
+            comparisons.Should().Contain(expectedProduct);
         }
 
 
