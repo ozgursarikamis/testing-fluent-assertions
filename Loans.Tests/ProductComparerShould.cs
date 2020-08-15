@@ -77,6 +77,15 @@ namespace Loans.Tests
         }
 
         [Test]
+        public void ReturnComparisonsSortedByProductName()
+        {
+            List<MonthlyRepaymentComparison> comparisons =
+                sut.CompareMonthlyRepayments(new LoanTerm(30));
+
+            comparisons.Should().BeInAscendingOrder(x => x.ProductName);
+        }
+
+        [Test]
         public void ReturnComparisonForFirstProduct_WithPartialKnownExpectedValues()
         {
             List<MonthlyRepaymentComparison> comparisons =
