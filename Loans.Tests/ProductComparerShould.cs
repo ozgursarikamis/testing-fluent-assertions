@@ -3,6 +3,7 @@ using Loans.Domain.Applications.Values;
 using NUnit.Framework;
 using System.Collections.Generic;
 using FluentAssertions;
+using FluentAssertions.Execution;
 
 namespace Loans.Tests
 {
@@ -100,14 +101,14 @@ namespace Loans.Tests
         public void AssertionScope()
         {
             var comparisons = sut.CompareMonthlyRepayments(new LoanTerm(30));
-
-            comparisons.Should().NotBeNullOrEmpty();
-            comparisons.Should().HaveCount(4); // fails
-
-            // below won't executed:
-            comparisons.Should().OnlyHaveUniqueItems();
-            comparisons.Should().Contain(new MonthlyRepaymentComparison("v", 1, 643.28m));
-            comparisons.Should().BeInAscendingOrder(x => x.ProductName);
+            using (new AssertionScope())
+            {
+                comparisons.Should().NotBeNullOrEmpty();
+                comparisons.Should().HaveCount(4); // fails 
+                comparisons.Should().OnlyHaveUniqueItems();
+                comparisons.Should().Contain(new MonthlyRepaymentComparison("v", 1, 643.28m));
+                comparisons.Should().BeInAscendingOrder(x => x.ProductName);
+            }
         }
     }
 }
