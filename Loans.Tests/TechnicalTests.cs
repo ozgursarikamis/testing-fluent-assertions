@@ -29,7 +29,7 @@ namespace Loans.Tests
         [Test]
         public void AllValueObjectsInCorrectNamespace()
         {
-            Assembly productionCodeAssembly = typeof(LoanAmount).Assembly;
+            var productionCodeAssembly = typeof(LoanAmount).Assembly;
 
             IEnumerable<Type> valueObjectTypes = AllTypes.From(productionCodeAssembly)
                                               .ThatDeriveFrom<ValueObject>();
@@ -40,9 +40,9 @@ namespace Loans.Tests
         [Test]
         public void NamespaceContainsOnlyValueObjects()
         {
-            Assembly productionCodeAssembly = typeof(LoanAmount).Assembly;
+            var productionCodeAssembly = typeof(LoanAmount).Assembly;
 
-            IEnumerable<Type> nonValueObjectTypesInNameSpace = AllTypes.From(productionCodeAssembly)
+            var nonValueObjectTypesInNameSpace = AllTypes.From(productionCodeAssembly)
                                           .ThatAreInNamespace("Loans.Domain.Applications.Values")
                                           .ThatDoNotDeriveFrom<ValueObject>()
                                           .Where(x => x.GetCustomAttribute<CompilerGeneratedAttribute>() == null);
