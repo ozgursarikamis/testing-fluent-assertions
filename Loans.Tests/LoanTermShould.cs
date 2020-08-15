@@ -49,11 +49,16 @@ namespace Loans.Tests
         [Test]
         public void NotAllowZeroYears()
         {
-            Assert.That(() => new LoanTerm(0), 
-                        Throws.TypeOf<ArgumentOutOfRangeException>()
-                              .With
-                              .Matches<ArgumentOutOfRangeException>(
-                                       ex => ex.ParamName == "years"));
+            //Assert.That(() => new LoanTerm(0), 
+            //            Throws.TypeOf<ArgumentOutOfRangeException>()
+            //                  .With
+            //                  .Matches<ArgumentOutOfRangeException>(
+            //                           ex => ex.ParamName == "years"));
+
+            Action act = () => new LoanTerm(0);
+            act.Should().Throw<ArgumentOutOfRangeException>()
+                .And
+                .ParamName.Should().Be("years");
         }
 
 
