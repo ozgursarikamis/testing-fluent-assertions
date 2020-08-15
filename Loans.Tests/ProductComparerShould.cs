@@ -110,5 +110,19 @@ namespace Loans.Tests
                 comparisons.Should().BeInAscendingOrder(x => x.ProductName);
             }
         }
+
+        [Test]
+        public void AssertionScopes_FluentChained()
+        {
+            var comparisons = sut.CompareMonthlyRepayments(new LoanTerm(30));
+            using (new AssertionScope())
+            {
+                comparisons.Should().NotBeNullOrEmpty()
+                    .And.HaveCount(4)
+                    .And.OnlyHaveUniqueItems()
+                    .And.Contain(new MonthlyRepaymentComparison("v", 1, 643.28m))
+                    .And.BeInAscendingOrder(x => x.ProductName);
+            }
+        }
     }
 }
